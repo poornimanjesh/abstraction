@@ -1,0 +1,224 @@
+Abstract Class:
+package com.sgtesting.abstractdemo;
+abstract class EngineerCollege
+{
+	abstract void showCollegeName(String name);
+	void showBranches(String branches[])
+	{
+		System.out.println("Branch Names...");
+		for(int i=0;i<branches.length;i++)
+		{
+			System.out.println(branches[i]);
+		}
+	}
+}
+class SLNEngg extends EngineerCollege
+{
+	void showCollegeName(String name)
+	{
+		System.out.println("College Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class AbstractDemo1 {
+	public static void main(String[] args) {
+		SLNEngg sln=new SLNEngg();
+		String a[]= {"CSE","Mech","EEE"};
+		sln.showBranches(a);
+		sln.showCollegeName("SLN Engineering");
+		sln.showAddress("Near to VijayaNagar Busstop");
+	}
+
+}
+
+
+Special Case:
+We can’t create an object for Abstract class, we can provide only object reference.
+package com.sgtesting.abstractdemo;
+abstract class EngineerCollege
+{
+	abstract void showCollegeName(String name);
+	void showBranches(String branches[])
+	{
+		System.out.println("Branch Names...");
+		for(int i=0;i<branches.length;i++)
+		{
+			System.out.println(branches[i]);
+		}
+	}
+}
+class SLNEngg extends EngineerCollege
+{
+	void showCollegeName(String name)
+	{
+		System.out.println("College Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class AbstractDemo1 {
+	public static void main(String[] args) {
+		EngineerCollege sln=new SLNEngg();
+		String a[]= {"CSE","Mech","EEE"};
+		sln.showBranches(a);
+		sln.showCollegeName("SLN Engineering");
+	//	sln.showAddress("Near to VijayaNagar Busstop"); Can't access this method
+	}
+
+}
+
+
+Interface Concepts:
+Case 1: Sample Example of interface
+package com.sgtesting.abstractdemo;
+interface University
+{
+	abstract void showUniversityName(String name);
+}
+
+class BMSEngg implements University
+{
+	public void showUniversityName(String name)
+	{
+		System.out.println("University Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class InterfaceDemo1 {
+	public static void main(String[] args) {
+		BMSEngg obj=new BMSEngg();
+		obj.showUniversityName("VTU");
+		obj.showAddress("7th Main JP Nagar");
+	}
+
+}
+
+Multiple Inheritance Concept:
+package com.sgtesting.abstractdemo;
+interface University
+{
+	abstract void showUniversityName(String name);
+}
+
+interface College
+{
+	void showCollegeName(String name);
+}
+
+class BMSEngg implements University,College
+{
+	public void showUniversityName(String name)
+	{
+		System.out.println("University Name :"+name);
+	}
+	
+	public void showCollegeName(String name)
+	{
+		System.out.println("College Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class InterfaceDemo1 {
+	public static void main(String[] args) {
+		BMSEngg obj=new BMSEngg();
+		obj.showUniversityName("VTU");
+		obj.showCollegeName("BMS Engineering");
+		obj.showAddress("7th Main JP Nagar");
+	}
+
+}
+
+
+An Interface extends another Interface:
+package com.sgtesting.abstractdemo;
+interface University
+{
+	abstract void showUniversityName(String name);
+}
+
+interface College extends University
+{
+	void showCollegeName(String name);
+}
+
+class BMSEngg implements College
+{
+	public void showUniversityName(String name)
+	{
+		System.out.println("University Name :"+name);
+	}
+	
+	public void showCollegeName(String name)
+	{
+		System.out.println("College Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class InterfaceDemo1 {
+	public static void main(String[] args) {
+		BMSEngg obj=new BMSEngg();
+		obj.showUniversityName("VTU");
+		obj.showCollegeName("BMS Engineering");
+		obj.showAddress("7th Main JP Nagar");
+	}
+
+}
+
+Special Case: We can’t create an object for Interface, we can provide only object reference, in this case only the members which are available in the interface alone can be accessible.
+package com.sgtesting.abstractdemo;
+interface University
+{
+	abstract void showUniversityName(String name);
+}
+
+interface College 
+{
+	void showCollegeName(String name);
+}
+
+class BMSEngg implements College,University
+{
+	public void showUniversityName(String name)
+	{
+		System.out.println("University Name :"+name);
+	}
+	
+	public void showCollegeName(String name)
+	{
+		System.out.println("College Name :"+name);
+	}
+	
+	void showAddress(String address)
+	{
+		System.out.println("Address :"+address);
+	}
+}
+public class InterfaceDemo1 {
+	public static void main(String[] args) {
+		College obj=new BMSEngg();
+//		obj.showUniversityName("VTU");  can't accessible
+		obj.showCollegeName("BMS Engineering");
+//		obj.showAddress("7th Main JP Nagar");   can't accessible
+	}
+
+}
+
